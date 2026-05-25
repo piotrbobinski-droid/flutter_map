@@ -84,16 +84,9 @@ class _FlutterMapStateContainer extends State<FlutterMap>
     final widgets = ClipRect(
       child: Stack(
         children: <Widget>[
-          // Skip the background ColoredBox when fully transparent so the map
-          // is transparent to hit-tests where no children paint. This lets
-          // FlutterMap be used as an overlay on top of a platform-view map
-          // (MapLibre, Mapbox, Google Maps) with gestures falling through to
-          // the underlying view while individual marker GestureDetectors keep
-          // working.
-          if (widget.options.backgroundColor.a != 0)
-            Positioned.fill(
-              child: ColoredBox(color: widget.options.backgroundColor),
-            ),
+          Positioned.fill(
+            child: ColoredBox(color: widget.options.backgroundColor),
+          ),
           ...widget.children,
         ],
       ),
